@@ -15,7 +15,7 @@ public class moveenemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = GameObject.FindWithTag("player");
+        playerObject = GameObject.Find("castle");
         navAgent = GetComponent<NavMeshAgent>();
     }
 
