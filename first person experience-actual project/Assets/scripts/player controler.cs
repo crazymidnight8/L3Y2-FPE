@@ -13,6 +13,17 @@ public class playercontroler : MonoBehaviour
     public float jumpForce;
     Vector2 Inputs;
 
+    public Vector3 moveDirection;
+    // public float maxDashTime = 1.0f, dashSpeed = 1.0f, dashStoppingSpeed = 0.1f, dashDistance = 10;
+
+    public float dashValue;
+    public float currentDashValue;
+
+    public float dashCooldown;
+    public float cooldownValue;
+
+    private float currnetDashTime;
+
     public CharacterController controller;
     public GameObject cam;
     public GameObject playerHead;
@@ -24,6 +35,8 @@ public class playercontroler : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+        // currnetDashTime = maxDashTime;
     }
 
     // Update is called once per frame
@@ -37,6 +50,44 @@ public class playercontroler : MonoBehaviour
         Move();
         Jump();
         Rotation();
+
+        // if (Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     currnetDashTime = 0.0f;
+        // }
+        // if (currnetDashTime < maxDashTime)
+        // {
+        //     moveDirection = new Vector3(Inputs.x, gravity, Inputs.y);
+        //     currnetDashTime += dashStoppingSpeed;
+        // }
+        // else
+        // {
+        //     moveDirection = Vector3.zero;
+        // }
+        // controller.Move(moveDirection * Time.deltaTime * dashSpeed);
+
+
+        // Dash
+        if (Input.GetKeyDown(KeyCode.Q) && cooldownValue <= 0)
+        {
+            currentDashValue = dashValue;
+
+            cooldownValue = dashCooldown;
+        }
+
+        if (currentDashValue > 1)
+        {
+            currentDashValue -= Time.deltaTime * 2f;
+        }
+        else
+        {
+            currentDashValue = 1f;
+        }
+
+        if (cooldownValue > 0)
+        {
+            cooldownValue -= Time.deltaTime;
+        }
     }
 
     void Move()
@@ -44,7 +95,7 @@ public class playercontroler : MonoBehaviour
         Inputs = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 movement = new Vector3(Inputs.x, gravity, Inputs.y);
         movement = Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0) * movement;
-        controller.Move(movement * moveSpeed * Time.deltaTime);
+        controller.Move(movement * moveSpeed * Time.deltaTime * currentDashValue);
     }
 
     void Rotation()

@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class moveenemy : MonoBehaviour
 {
+    public int damage;
+
     public float damageAmount, attackDelay, attackRate, attackDistance, health;
 
     GameObject playerObject;
@@ -23,13 +25,13 @@ public class moveenemy : MonoBehaviour
     void Update()
     {
         Move();
-        if(Time.time > attackDelay)
-        {
-            if(Vector3.Distance(playerObject.transform.position, transform.position) <= attackDistance)
-            {
-                Attack();
-            }
-        }
+        // if(Time.time > attackDelay)
+        // {
+        //     if(Vector3.Distance(playerObject.transform.position, transform.position) <= attackDistance)
+        //     {
+        //         Attack();
+        //     }
+        // }
     }
 
     void Move()
@@ -37,9 +39,18 @@ public class moveenemy : MonoBehaviour
         navAgent.destination = playerObject.transform.position;
     }
 
-    void Attack()
+    // void Attack()
+    // {
+    //     playerObject.GetComponent<playerhealth>().health -= damageAmount;
+    //     attackDelay = Time.time + attackRate;
+    // }
+
+    private void OnTriggerEnter(Collider other)
     {
-        playerObject.GetComponent<playerhealth>().health -= damageAmount;
-        attackDelay = Time.time + attackRate;
+        if (other.gameObject.CompareTag("castle"))
+        {
+            other.gameObject.GetComponent<castle>().hp -= damage;
+            Destroy(gameObject);
+        }
     }
 }
