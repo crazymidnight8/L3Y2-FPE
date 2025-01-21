@@ -43,4 +43,13 @@ public class Health : MonoBehaviour
         hp = maxHp;
         active = false;
     }
+
+    public void TakeDamage(int amount)
+	{
+	    hp -= amount;
+	    if (hp <= 0f)
+	    {
+	        Destroy(gameObject);
+	    }
+    }
 }

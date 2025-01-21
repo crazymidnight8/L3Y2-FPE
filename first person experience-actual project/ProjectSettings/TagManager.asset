@@ -8,6 +8,7 @@ TagManager:
   - castle
   - SpawnPoints
   - enemy
+  - spikes
   layers:
   - Default
   - TransparentFX

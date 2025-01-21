@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    public int damage;
+
     public GameObject Sword;
     public bool CanAttack = true;
     public float AttackCooldown = 1.0f;
