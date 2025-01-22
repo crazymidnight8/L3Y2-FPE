@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class moveenemy : MonoBehaviour
+public class enemy : MonoBehaviour
 {
     public int damage;
 

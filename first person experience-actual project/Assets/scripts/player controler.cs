@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playercontroler : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class playercontroler : MonoBehaviour
     Vector2 Inputs;
 
     public Vector3 moveDirection;
+
+    public Slider DashCool;
     // public float maxDashTime = 1.0f, dashSpeed = 1.0f, dashStoppingSpeed = 0.1f, dashDistance = 10;
 
     public float dashValue;
@@ -36,12 +39,16 @@ public class playercontroler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
+        DashCool.maxValue = cooldownValue;
+
         // currnetDashTime = maxDashTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        DashCool.value = cooldownValue;
+
         if (transform.position.y < -20f)
         {
             StartCoroutine(ResetOnDeath());
