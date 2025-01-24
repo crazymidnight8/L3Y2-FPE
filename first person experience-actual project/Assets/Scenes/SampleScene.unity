@@ -3201,6 +3201,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1109625324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109625325}
+  m_Layer: 3
+  m_Name: firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109625325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109625324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.406, z: 0.839}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7219510840877295042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111918678
 GameObject:
   m_ObjectHideFlags: 0
@@ -7237,7 +7268,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -7329,6 +7360,10 @@ PrefabInstance:
     - target: {fileID: 5446884683403773788, guid: 8a0c9087c1372d240914dff77d3847d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599854269916056474, guid: 8a0c9087c1372d240914dff77d3847d1, type: 3}
+      propertyPath: bulletDamage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7505,7 +7540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348922755546383315, guid: e08882306f2f1554b82761fe998bea1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 55.04
+      value: 60.41
       objectReference: {fileID: 0}
     - target: {fileID: 5348922755546383315, guid: e08882306f2f1554b82761fe998bea1d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7562,6 +7597,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1965928961}
+  - {fileID: 1109625325}
   m_Father: {fileID: 1234946201108990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &7938555467777931596
@@ -7602,6 +7638,8 @@ GameObject:
   - component: {fileID: 9169876086799361818}
   - component: {fileID: 4279518938628446684}
   - component: {fileID: 4775493233090655259}
+  - component: {fileID: 9169876086799361820}
+  - component: {fileID: 9169876086799361821}
   m_Layer: 3
   m_Name: musketeer (prototype)
   m_TagString: Untagged
@@ -7621,12 +7659,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5845a0c3429e6b489d1e0a5d874d9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 0
   damageAmount: 15
   attackDelay: 0
   attackRate: 0.5
   attackDistance: 2
   health: 0
+--- !u!114 &9169876086799361820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169876086799361817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f277254e29a72b44684e784eb8b41dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 1105747320}
+  firePoint: {fileID: 1109625324}
+  fireRate: 0.1
+--- !u!135 &9169876086799361821
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169876086799361817}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 9.15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
