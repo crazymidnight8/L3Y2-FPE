@@ -9,47 +9,63 @@ public class musketeer : MonoBehaviour
 
     public float attackDelay, attackRate, attackDistance, health;
 
-    GameObject playerObject;
+    // GameObject playerObject;
 
 
     NavMeshAgent navAgent;
 
+    MusketeerSkillActivate skillScript;
+
+    bool active;
+
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = GameObject.Find("enemy");
+        // playerObject = GameObject.FindGameObjectWithTag("enemy");
+        skillScript = transform.GetComponent<MusketeerSkillActivate>();
         navAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        if(Time.time > attackDelay)
+        if (skillScript.target != null)
         {
-            if(Vector3.Distance(playerObject.transform.position, transform.position) <= attackDistance)
+            Move();
+
+            if (!active)
             {
-                Attack();
+                StartCoroutine(Attack());
             }
         }
+
+        // if(Time.time > attackDelay)
+        // {
+        //     if(Vector3.Distance(playerObject.transform.position, transform.position) <= attackDistance)
+        //     {
+        //         Attack();
+        //     }
+        // }
     }
 
     void Move()
     {
-        navAgent.destination = playerObject.transform.position;
+        navAgent.destination = skillScript.target.transform.position;
     }
 
-    void Attack()
-    {
-        playerObject.GetComponent<Health>().hp -= damageAmount;
-        attackDelay = Time.time + attackRate;
-    }
+    // void Attack()
+    // {
+    //     playerObject.GetComponent<Health>().hp -= damageAmount;
+    //     attackDelay = Time.time + attackRate;
+    // }
 
-    private void OnTriggerEnter(Collider other)
+    IEnumerator Attack()
     {
-        if (other.gameObject.CompareTag("enemy"))
-        {
-            other.gameObject.GetComponent<Health>().hp -= damage;
-        }
+        active = true;
+
+        skillScript.target.GetComponent<Health>().hp -= damageAmount;
+
+        yield return new WaitForSeconds(attackRate);
+        active = false;
     }
 }

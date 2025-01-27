@@ -39,7 +39,7 @@ public class playercontroler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        DashCool.maxValue = cooldownValue;
+        DashCool.maxValue = dashCooldown;
 
         // currnetDashTime = maxDashTime;
     }

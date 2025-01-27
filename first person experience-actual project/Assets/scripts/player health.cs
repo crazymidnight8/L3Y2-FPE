@@ -26,6 +26,10 @@ public class playerhealth : MonoBehaviour
             health = maxHealth;
             GameOver();
         }
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 
     void GameOver ()
