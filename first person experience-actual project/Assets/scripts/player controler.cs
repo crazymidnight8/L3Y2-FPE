@@ -34,9 +34,13 @@ public class playercontroler : MonoBehaviour
     public string spawnPoint;
     public Animator bbox;
 
+    spawning spawning;
+
     // Start is called before the first frame update
     void Start()
     {
+        spawning = GameObject.Find("EnemySpawner").gameObject.transform.GetComponent<spawning>();
+
         Cursor.lockState = CursorLockMode.Locked;
 
         DashCool.maxValue = dashCooldown;
@@ -94,6 +98,22 @@ public class playercontroler : MonoBehaviour
         if (cooldownValue > 0)
         {
             cooldownValue -= Time.deltaTime;
+        }
+
+        //start next wave
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (spawning.enemiesLeft <= 0)
+            {
+                spawning.enemiesToSpawn = spawning.enemiesToSpawn * 1.2f;
+                spawning.enemiesLeft = spawning.enemiesToSpawn;
+                spawning.waveCounter = spawning.waveCounter + 1;
+                if (spawning.waveCounter == 7)
+                {
+                    spawning.enemiesToSpawn = 1;
+                    spawning.enemiesLeft = spawning.enemiesToSpawn;
+                }
+            }
         }
     }
 
