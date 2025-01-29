@@ -3327,7 +3327,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1111918679
 Transform:
   m_ObjectHideFlags: 0
@@ -5347,7 +5347,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1547051169
 Transform:
   m_ObjectHideFlags: 0
@@ -5397,7 +5397,7 @@ MonoBehaviour:
   bossToSpawn: {fileID: 2962080559886570031, guid: bb7ec383478e52d4cb2db795f809dd89, type: 3}
   spawnRate: 1
   enemiesLeft: 0
-  enemiesToSpawn: 1
+  enemiesToSpawn: 10
   waveCounter: 0
 --- !u!4 &1554834124
 Transform:
@@ -7465,7 +7465,7 @@ Transform:
   m_GameObject: {fileID: 9169876086799361817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50.1, y: 1.4, z: -0.58}
+  m_LocalPosition: {x: 52.1, y: 1.4, z: -0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7772,7 +7772,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -7825,7 +7825,7 @@ MonoBehaviour:
   damageAmount: 15
   attackDelay: 0
   attackRate: 1
-  attackDistance: 0
+  attackDistance: 3
   health: 0
 --- !u!114 &9169876086799361820
 MonoBehaviour:

@@ -33,7 +33,9 @@ public class musketeer : MonoBehaviour
         {
             Move();
 
-            if (!active)
+            // check distance between musketeer and target
+
+            if (!active && Vector3.Distance(skillScript.target.transform.position, transform.position) <= attackDistance) // check for certain freshold
             {
                 StartCoroutine(Attack());
             }
