@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4443dd354c689c849a12ccea6d29a8ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 50
   damageAmount: 5
   attackDelay: 0
   attackRate: 1
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b1edb29fdd3e14da404af36ec1c198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 20
+  hp: 100
   respawn: 0
   respawnTime: 0
 --- !u!54 &5081381783567015189
